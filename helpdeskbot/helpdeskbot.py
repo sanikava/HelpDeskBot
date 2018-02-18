@@ -23,14 +23,15 @@ BOT_PREFIX = ("?", "!")
 
 class HelpDeskBot:
 
-    def __init__(self, channel_name, token, debug_file_name):
+    def __init__(self, channel_name, token_file_name, debug_file_name):
         logging.basicConfig(
             filename=debug_file_name,
             level=logging.INFO,
             format='%(asctime)s %(module)s %(msg)s',
         )
         logging.info("[*] Initializing bot...")
-        self.token = token
+        with open(token_file_name) as token_file:
+            self.token = token_file.read().strip()
         self.designated_channel_name = channel_name
         self.client = Bot(command_prefix=BOT_PREFIX)
         self.setup()
@@ -64,9 +65,10 @@ class HelpDeskBot:
                              aliases=['btc'])
         async def bitcoin():
             url = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
-            raw_response = await aiohttp.ClientSession().get(url)
-            response = await raw_response.json()
-            await self.client.say("Bitcoin price is: $" + response['bpi']['USD']['rate'])
+            async with aiohttp.ClientSession() as session:
+                raw_response = await session.get(url)
+                response = await raw_response.json(content_type='application/javascript')
+                await self.client.say("Bitcoin price is: $" + response['bpi']['USD']['rate'])
 
         @self.client.command(name='8ball',
                              description="Answers a yes/no question.",

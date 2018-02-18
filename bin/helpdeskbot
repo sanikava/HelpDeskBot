@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 """helpdeskbot.
+
 Utility bot for Discord
+
 Usage:
   helpdeskbot <channel> <token_file> <log_file>
+
 Options:
   <channel>     Name of channel to respond in
   <token_file>  File containing bot's Discord API token

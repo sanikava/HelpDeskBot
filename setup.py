@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='helpdeskbot',
-    version='1.0.1',
+    version='1.0.9',
     description='Discord utility bot for DevDungeon.com',
     url='https://github.com/DevDungeon/HelpDeskBot',
     author='DevDungeon',
@@ -16,6 +16,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'discord.py',
+        'docopt',
         'aiohttp',
     ]
 )
