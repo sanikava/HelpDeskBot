@@ -1,10 +1,12 @@
 import logging
 import random
 import aiohttp
+from urllib import parse
 import discord
 from discord.ext.commands import Bot
 
-
+# TODO Stocks, ?dow ?nyse cvs
+# TODO ?stats - # messages, number of new joins over time (Generate image and upload?)
 # TODO add "Roll" for dice roll
 # TODO Weather?
 # TODO Define?
@@ -53,17 +55,27 @@ class HelpDeskBot:
             # Ignore messages by bots (including self)
             if message.author.bot:
                 return
-            # Only respond to the channel designated and private messages.
-            if not message.channel.is_private and message.channel.name != self.designated_channel_name:
-                return
+
+            # Only return help in designated channel
+            if message.content.startswith(BOT_PREFIX):
+                msg = message.content.strip("".join(list(BOT_PREFIX)))
+                if msg.startswith("help"):
+                    if not message.channel.is_private and message.channel.name != self.designated_channel_name:
+                        return
+
             # Pass on to rest of the client commands
             if message.content.startswith(BOT_PREFIX):
                 await self.client.process_commands(message)
 
         @self.client.command(description="Checks the current Bitcoin price in US Dollars from Coinbase.",
                              brief="Get current Bitcoin price",
-                             aliases=['btc'])
-        async def bitcoin():
+                             aliases=['btc'],
+                             pass_context=True)
+        async def bitcoin(context):
+            # Only respond to the channel designated and private messages.
+            if not context.message.channel.is_private and context.message.channel.name != self.designated_channel_name:
+                return
+
             url = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
             async with aiohttp.ClientSession() as session:
                 raw_response = await session.get(url)
@@ -76,6 +88,9 @@ class HelpDeskBot:
                              aliases=['eight_ball', 'eightball', '8-ball'],
                              pass_context=True)
         async def eight_ball(context):
+            # Only respond to the channel designated and private messages.
+            if not context.message.channel.is_private and context.message.channel.name != self.designated_channel_name:
+                return
             possible_responses = [
                 'That is a resounding no',
                 'It is not looking likely',
@@ -84,3 +99,16 @@ class HelpDeskBot:
                 'Definitely',
             ]
             await self.client.say(random.choice(possible_responses) + ", " + context.message.author.mention)
+
+        @self.client.command(name='lmgtfy',
+                             description="Let me Google that for you",
+                             brief="Google help",
+                             aliases=['letmegooglethatforyou', 'trygoogle', 'googlefirst'],
+                             pass_context=True)
+        async def lmgtfy(context):
+            search_term = context.message.content.strip("".join(list(BOT_PREFIX))).replace("lmgtfy", "").strip()
+            if search_term == "":
+                return
+            url = 'https://lmgtfy.com?' + parse.urlencode({"q": search_term})
+            response = "Here is the link you requested: " + url
+            await self.client.say(response)
