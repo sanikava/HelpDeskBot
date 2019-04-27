@@ -112,3 +112,11 @@ class HelpDeskBot:
             url = 'https://lmgtfy.com?' + parse.urlencode({"q": search_term})
             response = "Here is the link you requested: " + url
             await self.client.say(response)
+
+        @self.client.command(name='1on1',
+                             description='Print information about 1-on-1 coaching with NanoDano',
+                             brief='Coaching details',
+                             aliases=['tutoring', 'coaching', 'personal-help'])
+        async def coaching():
+            message = 'I am busy at the moment, but if you want personal 1-on-1 help, check out my availability schedule at https://www.codementor.io/nanodano'
+            await self.client.say(message)
