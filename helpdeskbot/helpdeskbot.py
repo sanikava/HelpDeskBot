@@ -113,10 +113,11 @@ class HelpDeskBot:
             response = "Here is the link you requested: " + url
             await self.client.say(response)
 
-        @self.client.command(name='1on1',
+        @self.client.command(name='gethelp',
                              description='Print information about 1-on-1 coaching with NanoDano',
                              brief='Coaching details',
-                             aliases=['tutoring', 'coaching', 'personal-help'])
-        async def coaching():
-            message = 'I am busy at the moment, but if you want personal 1-on-1 help, check out my availability schedule at https://www.codementor.io/nanodano'
+                             aliases=['1on1', 'tutoring', 'coaching', 'personal-help'],
+                             pass_context=True)
+        async def coaching(context):
+            message = 'Auto response from NanoDano: I am busy at the moment, I will respond when I have time or you may get help from friendly server members. If you want personal 1-on-1 help, check out my availability schedule at https://www.codementor.io/nanodano'
             await self.client.say(message)
