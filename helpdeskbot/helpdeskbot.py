@@ -123,3 +123,13 @@ class HelpDeskBot:
                       'whenever time permits, otherwise other friendly server members might help answer questions.' \
                       'If you want dedicated personal 1-on-1 help, you can schedule a private session with NanoDano at https://www.codementor.io/nanodano'
             await self.client.say(message)
+
+        @self.client.command(name='busy',
+                             description='Busy message for NanoDano that links to tutoring scheduling',
+                             brief='Busy message for NanoDano',
+                             aliases=['busyatm', 'in-a-meeting', 'working', 'meeting'],
+                             pass_context=True)
+        async def coaching(context):
+            message = 'AutoResponder for NanoDano: Sorry, I am busy or in a meeting right now. I get a lot of requests and I will respond when I have time, or ' \
+                      'you might get help from other friendly server members. If you would like schedule a 1-on-1 screen share session with me, go to https://www.codementor.io/nanodano'
+            await self.client.say(message)
