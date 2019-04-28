@@ -119,5 +119,7 @@ class HelpDeskBot:
                              aliases=['1on1', 'tutoring', 'coaching', 'personal-help'],
                              pass_context=True)
         async def coaching(context):
-            message = 'Auto response from NanoDano: I am busy at the moment, I will respond when I have time or you may get help from friendly server members. If you want personal 1-on-1 help, check out my availability schedule at https://www.codementor.io/nanodano'
+            message = 'NanoDano receives a lot of questions and can\'t always answer every one. He will provide free help' \
+                      'whenever time permits, otherwise other friendly server members might help answer questions.' \
+                      'If you want dedicated personal 1-on-1 help, you can schedule a private session with NanoDano at https://www.codementor.io/nanodano'
             await self.client.say(message)
