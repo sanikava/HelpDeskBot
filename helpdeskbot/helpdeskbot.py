@@ -133,3 +133,22 @@ class HelpDeskBot:
             message = 'AutoResponder for NanoDano: Sorry, I am busy or in a meeting right now. I get a lot of requests and I will respond when I have time, or ' \
                       'you might get help from other friendly server members. If you would like schedule a 1-on-1 screen share session with me, go to https://www.codementor.io/nanodano'
             await self.client.say(message)
+
+        @self.client.command(name='questions',
+                             description='Provides tips on asking good questions',
+                             brief='Tips on asking questions',
+                             aliases=['asking-for-help'],
+                             pass_context=True)
+        async def questions(context):
+            message = """```md
+# Tips on asking questions:
+
+- *DO* provide code.
+- *DO* provide error messages.
+- *DO* search the internet before you ask.
+- *DO* explain what you've already tried.
+- *DON'T* demand help. You will likely just be ignored.
+- *DON'T* ask questions like "Is there anyone who can help?". Just ask your question.
+- *DON'T* ask XY quesions: http://xyproblem.info/
+- *DO* read tips on asking smart questions: http://catb.org/~esr/faqs/smart-questions.html```"""
+            await self.client.say(message)
