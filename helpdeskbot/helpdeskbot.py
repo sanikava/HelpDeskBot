@@ -119,9 +119,9 @@ class HelpDeskBot:
                              aliases=['1on1', 'tutoring', 'coaching', 'personal-help'],
                              pass_context=True)
         async def coaching(context):
-            message = 'NanoDano receives a lot of questions and can\'t always answer every one. He will provide free help' \
-                      'whenever time permits, otherwise other friendly server members might help answer questions.' \
-                      'If you want dedicated personal 1-on-1 help, you can schedule a private session with NanoDano at https://www.codementor.io/nanodano'
+            message = 'Help is offered for free by NanoDano when time permits, ' \
+                      'otherwise other friendly server members might help answer questions. ' \
+                      'If you want private 1-on-1 screenshare, schedule time at https://www.codementor.io/nanodano'
             await self.client.say(message)
 
         @self.client.command(name='busy',
@@ -143,12 +143,14 @@ class HelpDeskBot:
             message = """```md
 # Tips on asking questions:
 
-- *DO* provide code.
-- *DO* provide error messages.
-- *DO* search the internet before you ask.
-- *DO* explain what you've already tried.
-- *DON'T* demand help. You will likely just be ignored.
-- *DON'T* ask questions like "Is there anyone who can help?". Just ask your question.
-- *DON'T* ask XY quesions: http://xyproblem.info/
-- *DO* read tips on asking smart questions: http://catb.org/~esr/faqs/smart-questions.html```"""
+## DO
+- Provide code and error messages.
+- Search the internet before you ask.
+- Explain what you've already tried.
+- Read tips on asking smart questions: http://catb.org/~esr/faqs/smart-questions.html
+
+## DO NOT
+- Demand help.
+- Ask questions like "Is anyone here?" Just ask your question.
+- Ask XY questions: http://xyproblem.info/```"""
             await self.client.say(message)
