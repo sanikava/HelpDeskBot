@@ -154,3 +154,22 @@ class HelpDeskBot:
 - Ask questions like "Is anyone here?" Just ask your question.
 - Ask XY questions: http://xyproblem.info/```"""
             await self.client.say(message)
+
+
+        @self.client.command(name='cathy',
+                             description='Provides documentation links for Cathy chat bot',
+                             brief='Cathy documentation links',
+                             aliases=['chattycathy', 'cathydocs', 'cathy-docs'],
+                             pass_context=True)
+        async def cathy(context):
+            message = 'Cathy chat bot documentation: https://cathy-docs.readthedocs.io/en/latest/'
+            await self.client.say(message)
+
+        @self.client.command(name='cannot_find_module',
+                             description='Link to tutorial on Node.js error cannot find module',
+                             brief='JS "Cannot find module" error link',
+                             aliases=['js_cant_find_module', 'js_wrong_file'],
+                             pass_context=True)
+        async def cannot_find_module(context):
+            message = 'How to solve "Error: Cannot find module \'*.js\'" with Node.js https://www.devdungeon.com/content/how-solve-error-cannot-find-module-js-nodejs'
+            await self.client.say(message)
