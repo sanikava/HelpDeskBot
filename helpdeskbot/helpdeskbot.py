@@ -144,14 +144,14 @@ class HelpDeskBot:
 # Tips on asking questions:
 
 ## DO
+- Clearly explain your problem.
 - Provide code and error messages.
 - Search the internet before you ask.
 - Explain what you've already tried.
-- Read tips on asking smart questions: http://catb.org/~esr/faqs/smart-questions.html
 
 ## DO NOT
 - Demand help.
-- Ask questions like "Is anyone here?" Just ask your question.
+- Ask questions like "Is anyone here?" or "Does anyone know Java?" Just ask your question.
 - Ask XY questions: http://xyproblem.info/```"""
             await self.client.say(message)
 
