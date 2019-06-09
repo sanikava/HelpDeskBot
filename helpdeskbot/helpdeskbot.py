@@ -173,3 +173,11 @@ class HelpDeskBot:
         async def cannot_find_module(context):
             message = 'How to solve "Error: Cannot find module \'*.js\'" with Node.js https://www.devdungeon.com/content/how-solve-error-cannot-find-module-js-nodejs'
             await self.client.say(message)
+
+        @self.client.command(name='devnix',
+                             description='Link to DevNix (a Fedora remix) information page',
+                             brief='Information about DevNix Linux distribution',
+                             pass_context=True)
+        async def devnix(context):
+            message = 'DevNix is a Linux distribution built by NanoDano. Learn more and download from https://www.devdungeon.com/devnix or view source at https://github.com/DevDungeon/DevNix/tree/f30/devnix'
+            await self.client.say(message)
