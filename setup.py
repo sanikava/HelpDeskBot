@@ -20,6 +20,6 @@ setup(
     install_requires=[
         'discord.py==1.3.3',
         'aiohttp==3.6.2',
-        'python-dotenv=0.13.0',
+        'python-dotenv==0.13.0',
     ]
 )
