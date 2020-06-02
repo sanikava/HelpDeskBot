@@ -1,0 +1,16 @@
+# Systemd service file
+# /etc/systemd/system/helpdeskbot.service
+
+[Unit]
+Description=HelpDeskBot
+After=network.target
+
+[Service]
+Type=simple
+User=helpdeskbot
+WorkingDirectory=/opt/helpdeskbot
+ExecStart=/opt/helpdeskbot/venv/bin/python -m helpdeskbot
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

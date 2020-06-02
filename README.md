@@ -8,17 +8,27 @@ https://www.devdungeon.com/content/help-desk-bot
 
 ## Installation
 
-    pip install helpdeskbot
+```bash
+pip install helpdeskbot
+```
+
+## Updating
+
+```bash
+pip install --upgrade helpdeskbot --no-cache-dir
+```
 
 ## Running
 
-Pass the command-line launcher the name of the channel it should listen in and the file with the bot token.
+Execute `helpdeskbot` and it will load the token and
+channel name from the `.env` file. Create the `.env`
+file in the working directory based on `misc/example.env`.
 
-    helpdeskbot <channel-name> <token_file>
-
-## Example usage
-
-    helpdeskbot help-desk bot_token.txt
+```bash
+helpdeskbot
+# or
+python -m helpdeskbot
+```
 
 ## Contact
 
